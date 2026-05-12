@@ -10,7 +10,7 @@ import type { Language } from '../data/content';
 /** Base URL for the Flask backend (override in production via Vite env). */
 export const API_BASE_URL =
   (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, '') ??
-  'http://127.0.0.1:5000';
+  'https://gramsahay-ai-backend.onrender.com';
 
 /**
  * One scheme row after GET /api/schemes?lang=…
