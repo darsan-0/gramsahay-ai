@@ -1,0 +1,7 @@
+# GramSahay AI — Python dependencies (backend only)
+# Pin loosely for a foundation; tighten versions in production CI.
+
+Flask>=3.0.0,<4.0.0
+flask-cors>=4.0.0,<6.0.0
+groq>=0.4.0,<1.0.0
+python-dotenv>=1.0.0,<2.0.0

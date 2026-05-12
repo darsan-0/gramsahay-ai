@@ -1,0 +1,158 @@
+{
+  "schemes": [
+    {
+      "id": "pm-kisan-001",
+      "category": "agriculture",
+      "scheme_name_en": "PM Kisan Samman Nidhi",
+      "scheme_name_te": "పీఎం కిసాన్ సమ్మాన్ నిధి",
+      "category_en": "Agriculture",
+      "category_te": "వ్యవసాయం",
+      "eligibility_en": "Small and marginal farmer families with cultivable land as per land records of states/UTs. Beneficiary must not fall in excluded categories (institutional land holders, higher income categories as defined by scheme guidelines).",
+      "eligibility_te": "రాష్ట్రాలు / కేంద్రపాలిత ప్రాంతాల భూమి రికార్డుల ప్రకారం సాగవచ్చు భూమి ఉన్న చిన్న మరియు సన్నకారు రైతు కుటుంబాలు. లబ్ధిదారుడు మినహాయింపు వర్గాలలో (సంస్థాగత భూస్వాములు, పథక మార్గదర్శకాల ప్రకారం ఉన్నత ఆదాయ వర్గాలు) ఉండకూడదు.",
+      "benefits_en": "Direct income support of ₹6,000 per year in three equal installments of ₹2,000 each, credited to Aadhaar-linked bank accounts.",
+      "benefits_te": "సంవత్సరానికి ₹6,000 నేరుగా ఆదాయ మద్దతు — మూడు సమాన వాయిదాలలో ప్రతి వాయిదా ₹2,000 చొప్పున, ఆధార్‌కు అనుసంధానమైన బ్యాంక్ ఖాతాలకు జమ.",
+      "documents_en": [
+        "Aadhaar card",
+        "Bank account details (passbook / cancelled cheque)",
+        "Land ownership records",
+        "Citizenship / residence proof as required by state"
+      ],
+      "documents_te": [
+        "ఆధార్ కార్డు",
+        "బ్యాంక్ ఖాతా వివరాలు (పాస్‌బుక్ / రద్దు చెక్)",
+        "భూమి యజమాన్య రికార్డులు",
+        "రాష్ట్రం అవసరమని పేర్కొన్న పౌరసత్వం / నివాస రుజువు"
+      ],
+      "language_support": ["en", "te"]
+    },
+    {
+      "id": "rythu-bharosa-002",
+      "category": "agriculture",
+      "scheme_name_en": "YSR Rythu Bharosa",
+      "scheme_name_te": "వైఎస్ఆర్ రైతు భరోసా",
+      "category_en": "Agriculture",
+      "category_te": "వ్యవసాయం",
+      "eligibility_en": "Farmers in Andhra Pradesh including tenant farmers and agricultural labourers as per state scheme rules; annual financial assistance subject to state eligibility lists.",
+      "eligibility_te": "ఆంధ్రప్రదేశ్‌లోని రైతులు — రాష్ట్ర పథక నియమాల ప్రకారం కౌలుదారు రైతులు మరియు వ్యవసాయ కూలీలు సహా; రాష్ట్ర అర్హత జాబితాల ఆధారంగా వార్షిక ఆర్థిక సహాయం.",
+      "benefits_en": "Financial assistance for farmers (including support components for inputs and tenant/labour categories as per current state policy).",
+      "benefits_te": "రైతులకు ఆర్థిక సహాయం (ప్రస్తుత రాష్ట్ర విధానం ప్రకారం ఇన్‌పుట్లు మరియు కౌలుదారు / కూలీ వర్గాలకు మద్దతు అంశాలు సహా).",
+      "documents_en": [
+        "White ration card / family details",
+        "Aadhaar",
+        "Land passbook or tenancy proof where applicable",
+        "Bank account linked to beneficiary"
+      ],
+      "documents_te": [
+        "తెలుపు రేషన్ కార్డు / కుటుంబ వివరాలు",
+        "ఆధార్",
+        "భూమి పాస్‌బుక్ లేదా వర్తించిన చోట కౌలు రుజువు",
+        "లబ్ధిదారుకు అనుసంధానమైన బ్యాంక్ ఖాతా"
+      ],
+      "language_support": ["en", "te"]
+    },
+    {
+      "id": "jvd-003",
+      "category": "education",
+      "scheme_name_en": "Jagananna Vidya Deevena",
+      "scheme_name_te": "జగనన్న విద్యా దీవెన",
+      "category_en": "Education",
+      "category_te": "విద్య",
+      "eligibility_en": "Students pursuing ITI, polytechnic, degree and above in government or eligible private institutions in Andhra Pradesh; family income and course eligibility as per government orders.",
+      "eligibility_te": "ఆంధ్రప్రదేశ్‌లో ప్రభుత్వ లేదా అర్హత గల ప్రైవేట్ సంస్థల్లో ఐటీఐ, పాలిటెక్నిక్, డిగ్రీ మరియు అంతకంటే ఎక్కువ చదివే విద్యార్థులు; కుటుంబ ఆదాయం మరియు కోర్సు అర్హత ప్రభుత్వ ఉత్తర్వుల ప్రకారం.",
+      "benefits_en": "Full fee reimbursement for eligible courses and students, credited through institutional or direct benefit transfer mechanisms as per state norms.",
+      "benefits_te": "అర్హత గల కోర్సులు మరియు విద్యార్థులకు పూర్తి ఫీజు వాపసు; రాష్ట్ర నియమాల ప్రకారం సంస్థాగత లేదా నేరుగా లబ్ధి బదిలీ ద్వారా జమ.",
+      "documents_en": [
+        "Income certificate",
+        "Bonafide certificate from institution",
+        "Aadhaar of student and parent",
+        "Caste / community certificate if applicable",
+        "Bank account details"
+      ],
+      "documents_te": [
+        "ఆదాయ ప్రమాణపత్రం",
+        "సంస్థ నుండి బోనాఫైడ్ ప్రమాణపత్రం",
+        "విద్యార్థి మరియు తల్లిదండ్రుల ఆధార్",
+        "వర్తిస్తే కులం / సముదాయ ప్రమాణపత్రం",
+        "బ్యాంక్ ఖాతా వివరాలు"
+      ],
+      "language_support": ["en", "te"]
+    },
+    {
+      "id": "ayushman-004",
+      "category": "health",
+      "scheme_name_en": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB-PMJAY)",
+      "scheme_name_te": "ఆయుష్మాన్ భారత్ ప్రధాన్ మంత్రి జన్ ఆరోగ్య యోజన (ఏబీ-పీఎంజేవై)",
+      "category_en": "Health",
+      "category_te": "ఆరోగ్యం",
+      "eligibility_en": "Families identified as per SECC database and expanded categories for states that have adopted PM-JAY criteria; covers vulnerable families for secondary and tertiary hospital care.",
+      "eligibility_te": "ఎస్ఈసీసీ డేటాబేస్ ప్రకారం గుర్తించిన కుటుంబాలు మరియు పీఎంజేవై ప్రమాణాలను అంగీకరించిన రాష్ట్రాల్లో విస్తరింపబడిన వర్గాలు; ద్వితీయ మరియు తృతీయ ఆసుపత్రి సంరక్షణకు హానికర కుటుంబాలకు వర్తిస్తుంది.",
+      "benefits_en": "Health cover up to ₹5 lakh per family per year for listed secondary and tertiary care procedures at empanelled hospitals.",
+      "benefits_te": "ప్యానెల్ చేసిన ఆసుపత్రులలో జాబితా చేయబడిన ద్వితీయ మరియు తృతీయ సంరక్షణ విధానాలకు కుటుంబానికి సంవత్సరానికి ₹5 లక్షల వరకు ఆరోగ్య కవరేజ్.",
+      "documents_en": [
+        "PM-JAY e-card or eligibility verification",
+        "Aadhaar",
+        "Ration card / SECC reference where applicable"
+      ],
+      "documents_te": [
+        "పీఎంజేవై ఇ-కార్డు లేదా అర్హత ధృవీకరణ",
+        "ఆధార్",
+        "రేషన్ కార్డు / వర్తిస్తే ఎస్ఈసీసీ సూచన"
+      ],
+      "language_support": ["en", "te"]
+    },
+    {
+      "id": "ignoaps-005",
+      "category": "pension",
+      "scheme_name_en": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
+      "scheme_name_te": "ఇందిరా గాంధీ జాతీయ వృద్ధాప్య పెన్షన్ పథకం (ఐజీఎన్ఓఏపీఎస్)",
+      "category_en": "Pension",
+      "category_te": "పెన్షన్",
+      "eligibility_en": "BPL persons aged 60 years or above as per state social welfare department norms and BPL identification.",
+      "eligibility_te": "రాష్ట్ర సామాజిక సంక్షేమ శాఖ నియమాలు మరియు బీపీఎల్ గుర్తింపు ప్రకారం 60 సంవత్సరాలు లేదా అంతకంటే ఎక్కువ వయస్సు గల బీపీఎల్ వ్యక్తులు.",
+      "benefits_en": "Monthly pension amount as fixed by central and state contribution (amount varies by state rules and revisions).",
+      "benefits_te": "కేంద్ర మరియు రాష్ట్ర వాటా నిర్ణయించిన నెలవారీ పెన్షన్ మొత్తం (మొత్తం రాష్ట్ర నియమాలు మరియు సవరణల ప్రకారం మారవచ్చు).",
+      "documents_en": [
+        "Age proof",
+        "BPL certificate / inclusion in eligible list",
+        "Aadhaar",
+        "Bank account",
+        "Passport-size photographs"
+      ],
+      "documents_te": [
+        "వయస్సు రుజువు",
+        "బీపీఎల్ ప్రమాణపత్రం / అర్హత జాబితాలో చేరిక",
+        "ఆధార్",
+        "బ్యాంక్ ఖాతా",
+        "పాస్‌పోర్ట్ పరిమాణ ఫోటోలు"
+      ],
+      "language_support": ["en", "te"]
+    },
+    {
+      "id": "widow-pension-006",
+      "category": "pension",
+      "scheme_name_en": "State Widow Pension Scheme (illustrative)",
+      "scheme_name_te": "రాష్ట్ర వితంతువు పెన్షన్ పథకం (ఉదాహరణ)",
+      "category_en": "Pension",
+      "category_te": "పెన్షన్",
+      "eligibility_en": "Widows in the economically weaker sections meeting state-defined income and residence criteria.",
+      "eligibility_te": "రాష్ట్రం నిర్వచించిన ఆదాయ మరియు నివాస ప్రమాణాలను తీర్చే ఆర్థికంగా బలహీన వర్గాల వితంతువులు.",
+      "benefits_en": "Monthly financial assistance for livelihood support as per state government notification.",
+      "benefits_te": "రాష్ట్ర ప్రభుత్వ నోటిఫికేషన్ ప్రకారం జీవనోపాధి మద్దతుకు నెలవారీ ఆర్థిక సహాయం.",
+      "documents_en": [
+        "Death certificate of spouse",
+        "Income certificate",
+        "Residence proof",
+        "Aadhaar",
+        "Bank account details"
+      ],
+      "documents_te": [
+        "జీవిత భాగస్వామి మరణ ప్రమాణపత్రం",
+        "ఆదాయ ప్రమాణపత్రం",
+        "నివాస రుజువు",
+        "ఆధార్",
+        "బ్యాంక్ ఖాతా వివరాలు"
+      ],
+      "language_support": ["en", "te"]
+    }
+  ]
+}
