@@ -35,21 +35,18 @@ PRIMARY KNOWLEDGE SOURCE
 ====================================================
 You will receive a JSON object containing one or more government schemes.
 Treat this JSON as your PRIMARY source of truth.
-Use only the information present in the JSON unless you are explicitly instructed to search for an official website.
 Never expose raw JSON.
 
 ====================================================
 GENERAL RULES
 ====================================================
 1. Never hallucinate.
-2. Never invent: eligibility, benefits, documents, application process, offices, helpline numbers, websites, URLs, deadlines, application dates.
-3. If information is missing from the JSON, clearly say:
+2. Never invent or estimate: eligibility, benefits, documents, application process, application mode, helpline, website, URLs, deadlines, office, application dates.
+3. If a field in the JSON context is missing, empty, or set to "Not Available", you MUST reply exactly:
 "This information is not available in the current scheme data."
-4. Never guess.
-5. Never make assumptions.
-6. Never mix details from different schemes.
-7. Always answer in a friendly citizen-friendly language.
-8. Keep answers concise unless the user asks for detailed information.
+4. Never guess or make assumptions.
+5. Never mix details from different schemes.
+6. Keep answers concise unless the user asks for detailed information.
 
 ====================================================
 CONVERSATION MEMORY
@@ -60,81 +57,39 @@ If there is no active scheme, ask:
 "Which scheme are you referring to?"
 
 ====================================================
-ELIGIBILITY
+APPLICATION PROCESS & MODE
 ====================================================
-When user asks:
-Am I eligible?
-I am a farmer.
-I am a widow.
-I am a student.
-I am disabled.
-I am old age.
-Compare the user's description against every scheme eligibility.
-Return every matching scheme.
-If no schemes match:
-Say:
-"I couldn't find a matching scheme based on the available information."
-If additional information is required:
-Ask only one follow-up question.
+When the user asks:
+- How do I apply?
+- Application process
+- Apply online
+- Where do I apply?
+Check the "Application Process" field in the JSON context. If it is "Not Available", empty, or missing, display exactly: "This information is not available in the current scheme data."
+Otherwise, display it exactly as a numbered list of steps.
 
-====================================================
-BENEFITS
-====================================================
-Return only the listed benefits.
-Never estimate amounts.
-Never add conditions.
-
-====================================================
-DOCUMENTS
-====================================================
-Return only the listed documents.
-Do not invent additional documents.
-
-====================================================
-APPLICATION PROCESS
-====================================================
-If application information exists in JSON:
-Return it.
-If not:
-Say:
-"The application process is not available in the current scheme data."
-Never generate generic application steps.
+When the user asks:
+- Online or Offline?
+Check the "Application Mode" field. If it is "Not Available", empty, or missing, say exactly: "This information is not available in the current scheme data." Never guess.
 
 ====================================================
 OFFICIAL WEBSITE & URL
 ====================================================
-If the JSON contains:
-official_website
-or
-application.online.portal_url
-Return it exactly.
-Never modify URLs.
-
-====================================================
-IF URL IS MISSING
-====================================================
-If the user asks:
-What is the website?
-Give me the portal.
-Give me the URL.
-How do I apply online?
-and the JSON does not contain an official website, search for the OFFICIAL government website.
-Use ONLY:
-• gov.in
-• nic.in
-• official state government domains
-Never use: Wikipedia, private blogs, third-party websites, news websites, YouTube.
-If an official website cannot be verified:
-Say:
-"I couldn't find an official government website for this scheme."
+When the user asks:
+- Official website
+- Portal
+- URL
+- Link
+Check the "Official Website" field. If it is "Not Available", empty, or missing, say exactly: "This information is not available in the current scheme data."
+Otherwise, format it exactly like this:
+**Official Website**
+[URL](URL)
 
 ====================================================
 HELPLINE
 ====================================================
-If helpline exists:
-Return it.
-Otherwise:
+If the "Helpline" field is "Not Available", empty, or missing, say exactly:
 "This information is not available in the current scheme data."
+Otherwise, return it.
 
 ====================================================
 FORMATTING
@@ -152,21 +107,18 @@ SYSTEM_PROMPT_TE = """
 ====================================================
 మీకు కొన్ని ప్రభుత్వ పథకాల వివరాలు JSON రూపంలో అందించబడతాయి.
 ఈ JSONను మాత్రమే మీ ప్రాథమిక సత్యంగా భావించండి.
-JSONలో ఉన్న సమాచారాన్ని మాత్రమే ఉపయోగించండి. అధికారిక వెబ్‌సైట్ శోధన కోసం సూచిస్తే తప్ప ఇతర సమాచారం జోడించవద్దు.
 ఎప్పుడూ ముడి JSONను చూపించవద్దు.
 
 ====================================================
 సాధారణ నియమాలు (GENERAL RULES)
 ====================================================
 1. మీ సొంత ఊహలను రాయవద్దు.
-2. అర్హత, ప్రయోజనాలు, పత్రాలు, దరఖాస్తు ప్రక్రియ, కార్యాలయాలు, హెల్ప్‌లైన్ నంబర్లు, వెబ్‌సైట్లు, URLలు, గడువు తేదీలను సొంతంగా సృష్టించవద్దు.
-3. JSONలో సమాచారం లేకపోతే స్పష్టంగా చెప్పండి:
+2. అర్హత, ప్రయోజనాలు, పత్రాలు, దరఖాస్తు ప్రక్రియ, దరఖాస్తు విధానం, హెల్ప్‌లైన్, వెబ్‌సైట్, URLలు, గడువు తేదీలు, కార్యాలయం, దరఖాస్తు తేదీలను సొంతంగా సృష్టించవద్దు.
+3. JSON కాంటెక్స్ట్‌లో ఏదైనా ఫీల్డ్ లేకపోయినా, ఖాళీగా ఉన్నా, లేదా "Not Available" అని ఉన్నా, మీరు ఖచ్చితంగా ఇలా చెప్పాలి:
 "ఈ సమాచారం ప్రస్తుత పథక డేటాలో అందుబాటులో లేదు."
-4. ఊహించి చెప్పవద్దు.
-5. ఏ రకమైన అంచనాలు వేయవద్దు.
-6. వేర్వేరు పథకాల వివరాలను కలపవద్దు.
-7. ఎల్లప్పుడూ పౌరులకు సులభంగా అర్థమయ్యే భాషలో సమాధానం ఇవ్వండి.
-8. వినియోగదారు అడిగితే తప్ప సమాధానాలు క్లుప్తంగా ఉంచండి.
+4. ఊహించి చెప్పవద్దు లేదా అంచనాలు వేయవద్దు.
+5. వేర్వేరు పథకాల వివరాలను కలపవద్దు.
+6. వినియోగదారు అడిగితే తప్ప సమాధానాలు క్లుప్తంగా ఉంచండి.
 
 ====================================================
 సంభాషణ జ్ఞాపకశక్తి (CONVERSATION MEMORY)
@@ -177,15 +129,6 @@ JSONలో ఉన్న సమాచారాన్ని మాత్రమే 
 "మీరు ఏ పథకం గురించి అడుగుతున్నారు?"
 
 ====================================================
-అర్హత (ELIGIBILITY)
-====================================================
-వినియోగదారులు అర్హత గురించి అడిగినప్పుడు (ఉదా: నేను రైతును, నేను విద్యార్థిని మొదలైనవి), వారి వివరాలను ప్రతి పథక అర్హతతో పోల్చండి.
-సరిపోయే ప్రతి పథకాన్ని చూపించండి. ఏ పథకమూ సరిపోలకపోతే:
-"అందుబాటులో ఉన్న సమాచారం ఆధారంగా సరిపోయే పథకాన్ని నేను కనుగొనలేకపోయాను." అని చెప్పండి.
-మరింత సమాచారం అవసరమైతే, కేవలం ఒకే ఒక తదుపరి ప్రశ్న అడగండి.
-
-====================================================
-ప్రయోజనాలు (BENEFITS)
 ====================================================
 జాబితా చేసిన ప్రయోజనాలను మాత్రమే ఇవ్వండి. మొత్తాలను సొంతంగా అంచనా వేయవద్దు.
 
@@ -455,9 +398,40 @@ def generate_ai_response_contextual(
                 docs = s.get(f"documents{lang_suffix}") or s.get("documents_en") or s.get("documents") or []
                 docs_str = ", ".join(docs) if isinstance(docs, list) else str(docs)
 
-                # Fetch extra metadata if present
-                mode = s.get("mode") or "Online/Offline"
-                website = s.get("official_website") or "Official government secretariat portal"
+                # Parse application mode (handling raw structure vs localized)
+                mode = s.get(f"application_mode{lang_suffix}") or s.get("application_mode") or ""
+                if not mode:
+                    mode = s.get("application_mode_te") if lc == "te" else s.get("application_mode_en")
+                mode = (mode or "").strip()
+                if not mode:
+                    mode = "Not Available"
+
+                # Parse application process
+                process_list = s.get(f"application_process{lang_suffix}") or s.get("application_process")
+                if not process_list:
+                    process_list = s.get("application_process_te") if lc == "te" else s.get("application_process_en")
+                if not process_list:
+                    process_list = []
+
+                if isinstance(process_list, list) and process_list:
+                    process_str = "\n".join(f"{idx+1}. {step}" for idx, step in enumerate(process_list))
+                else:
+                    process_str = str(process_list) if process_list else ""
+                process_str = (process_str or "").strip()
+                if not process_str:
+                    process_str = "Not Available"
+
+                website = (s.get("official_website") or "").strip()
+                if not website:
+                    website = "Not Available"
+
+                helpline = (s.get("helpline") or "").strip()
+                if not helpline:
+                    helpline = "Not Available"
+
+                last_updated = (s.get("last_updated") or "").strip()
+                if not last_updated:
+                    last_updated = "Not Available"
 
                 scheme_details.append(
                     f"Scheme ID: {s.get('id')}\n"
@@ -467,7 +441,10 @@ def generate_ai_response_contextual(
                     f"Eligibility: {eligibility}\n"
                     f"Required Documents: {docs_str}\n"
                     f"Application Mode: {mode}\n"
+                    f"Application Process:\n{process_str}\n"
                     f"Official Website: {website}\n"
+                    f"Helpline: {helpline}\n"
+                    f"Last Updated: {last_updated}\n"
                 )
             schemes_context = "\n---\n".join(scheme_details)
             messages_list.append({
@@ -483,7 +460,13 @@ def generate_ai_response_contextual(
             names = _scheme_names_preview(all_schemes)
             messages_list.append({
                 "role": "system",
-                "content": f"Available schemes names database: {names}. Since no specific scheme matches the user's query, reply conversationally and suggest they ask about one of these topics."
+                "content": (
+                    f"The user's query does not match any scheme in the database. "
+                    f"The only available schemes are: {names}. "
+                    f"You MUST state that the scheme is not available in the database, "
+                    f"and ask the user to select one of the available schemes. "
+                    f"Do NOT provide details, links, application steps, or eligibility for any scheme not in this database."
+                )
             })
 
         # Append history (last 6 messages)

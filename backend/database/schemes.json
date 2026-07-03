@@ -23,7 +23,26 @@
         "బ్యాంక్ పాస్‌బుక్ (ఆధార్ సీడింగ్‌తో)",
         "ఓటీపీ/స్థితి కోసం మొబైల్ నంబర్"
       ],
-      "language_support": ["en", "te"]
+      "language_support": ["en", "te"],
+      "official_website": "https://pmkisan.gov.in",
+      "application_mode_en": "Online",
+      "application_mode_te": "ఆన్లైన్",
+      "application_process_en": [
+        "Visit the official PM-KISAN portal.",
+        "Click on 'New Farmer Registration'.",
+        "Enter your Aadhaar number and mobile number.",
+        "Fill in the required land details.",
+        "Submit the application and keep the registration number for tracking."
+      ],
+      "application_process_te": [
+        "అధికారిక పీఎం-కిసాన్ పోర్టల్‌ను సందర్శించండి.",
+        "'న్యూ ఫార్మర్ రిజిస్ట్రేషన్' పై క్లిక్ చేయండి.",
+        "మీ ఆధార్ సంఖ్య మరియు మొబైల్ సంఖ్యను నమోదు చేయండి.",
+        "అవసరమైన భూమి వివరాలను పూరించండి.",
+        "దరఖాస్తును సమర్పించి, ట్రాకింగ్ కోసం రిజిస్ట్రేషన్ సంఖ్యను ఉంచుకోండి."
+      ],
+      "helpline": "155261 / 1800115526",
+      "last_updated": "2026-07-03"
     },
     {
       "id": "rythu-bharosa-002",
@@ -48,7 +67,24 @@
         "బ్యాంక్ ఖాతా వివరాలు",
         "ధృవీకరణకు అవసరమైన రేషన్/కుటుంబ వివరాలు"
       ],
-      "language_support": ["en", "te"]
+      "language_support": ["en", "te"],
+      "official_website": "https://rythubharosa.ap.gov.in",
+      "application_mode_en": "Online through Secretariat",
+      "application_mode_te": "సచివాలయం ద్వారా ఆన్లైన్",
+      "application_process_en": [
+        "Contact your local Village/Ward Secretariat.",
+        "Provide Aadhaar, land pattadar passbook, and bank details.",
+        "The VRO will verify details and upload the application.",
+        "Track status on the official YSR Rythu Bharosa portal."
+      ],
+      "application_process_te": [
+        "మీ స్థానిక గ్రామ/వార్డు సచివాలయాన్ని సంప్రదించండి.",
+        "ఆధార్, భూమి పట్టాదార్ పాస్‌బుక్ మరియు బ్యాంక్ వివరాలను అందించండి.",
+        "VRO వివరాలను ధృవీకరించి, దరఖాస్తును అప్‌లోడ్ చేస్తారు.",
+        "అధికారిక వైఎస్ఆర్ రైతు భరోసా పోర్టల్‌లో స్థితిని ట్రాక్ చేయండి."
+      ],
+      "helpline": "1902",
+      "last_updated": "2026-07-03"
     },
     {
       "id": "jvd-003",
@@ -75,7 +111,26 @@
         "సంస్థ నుండి బోనాఫైడ్/ప్రవేశ వివరాలు",
         "చెల్లింపు విధానానికి అనుగుణంగా బ్యాంక్ ఖాతా వివరాలు"
       ],
-      "language_support": ["en", "te"]
+      "language_support": ["en", "te"],
+      "official_website": "https://jnanabhumi.ap.gov.in",
+      "application_mode_en": "Online",
+      "application_mode_te": "ఆన్లైన్",
+      "application_process_en": [
+        "Visit the official JnanaBhumi portal.",
+        "Login or register.",
+        "Fill the application form.",
+        "Upload required documents.",
+        "Submit through your institution."
+      ],
+      "application_process_te": [
+        "అధికారిక జ్ఞానభూమి పోర్టల్‌ను సందర్శించండి.",
+        "లాగిన్ లేదా నమోదు చేసుకోండి.",
+        "దరఖాస్తు ఫారమ్ పూర్తి చేయండి.",
+        "అవసరమైన పత్రాలను అప్‌లోడ్ చేయండి.",
+        "మీ విద్యాసంస్థ ద్వారా సమర్పించండి."
+      ],
+      "helpline": "08645274025",
+      "last_updated": "2026-07-03"
     },
     {
       "id": "ayushman-004",
@@ -98,7 +153,26 @@
         "ఆధార్",
         "చికిత్సాసంస్థ కోరిన రిఫరల్ మరియు మెడికల్ రికార్డులు"
       ],
-      "language_support": ["en", "te"]
+      "language_support": ["en", "te"],
+      "official_website": "https://ysraarogyasri.ap.gov.in",
+      "application_mode_en": "Offline through Empanelled Hospitals",
+      "application_mode_te": "ఎంపానెల్ ఆసుపత్రుల ద్వారా ఆఫ్లైన్",
+      "application_process_en": [
+        "Visit an empanelled government or private network hospital.",
+        "Meet the Aarogyamithra desk at the hospital.",
+        "Provide Aadhaar card and White Ration card.",
+        "The Aarogyamithra will process the pre-authorization.",
+        "Cashless treatment is approved based on eligible procedures."
+      ],
+      "application_process_te": [
+        "ఎంపానెల్ చేయబడిన ప్రభుత్వ లేదా ప్రైవేట్ నెట్‌వర్క్ ఆసుపత్రిని సందర్శించండి.",
+        "ఆసుపత్రిలోని ఆరోగ్యమిత్ర డెస్క్‌ను సంప్రదించండి.",
+        "ఆధార్ కార్డు మరియు వైట్ రేషన్ కార్డును అందించండి.",
+        "ఆరోగ్యమిత్ర ప్రీ-ఆథరైజేషన్ ప్రక్రియను పూర్తి చేస్తారు.",
+        "అర్హత కలిగిన చికిత్సల ఆధారంగా నగదు రహిత వైద్యం ఆమోదించబడుతుంది."
+      ],
+      "helpline": "104",
+      "last_updated": "2026-07-03"
     },
     {
       "id": "ignoaps-005",
@@ -119,11 +193,30 @@
       ],
       "documents_te": [
         "ఆధార్ కార్డు",
-        "వర్గానికి అనుగుణమైన రుజువులు (వయస్సు/వికలాంగత/వితంతువు మొదలైనవి)",
+        "ఆధార్ కార్డు (వయస్సు/వికలాంగత/వితంతువు మొదలైనవి)",
         "నివాస మరియు కుటుంబ వివరాలు",
         "పెన్షన్ చెల్లింపుల కోసం బ్యాంక్ ఖాతా వివరాలు"
       ],
-      "language_support": ["en", "te"]
+      "language_support": ["en", "te"],
+      "official_website": "https://sspensions.ap.gov.in",
+      "application_mode_en": "Online through Secretariat",
+      "application_mode_te": "సచివాలయం ద్వారా ఆన్లైన్",
+      "application_process_en": [
+        "Apply through the Village/Ward Secretariat.",
+        "Submit proof of age, residence, and category eligibility.",
+        "The Welfare Education Assistant will verify the documents.",
+        "The proposal is approved by the MPDO/Municipal Commissioner.",
+        "Pension is delivered at the doorstep monthly."
+      ],
+      "application_process_te": [
+        "గ్రామ/వార్డు సచివాలయం ద్వారా దరఖాస్తు చేసుకోండి.",
+        "వయస్సు, నివాసం మరియు వర్గ అర్హత రుజువులను సమర్పించండి.",
+        "వెల్ఫేర్ ఎడ్యుకేషన్ అసిస్టెంట్ పత్రాలను ధృవీకరిస్తారు.",
+        "దరఖాస్తును MPDO/మున్సిపల్ కమిషనర్ ఆమోదిస్తారు.",
+        "పెన్షన్ ప్రతి నెలా నేరుగా ఇంటి వద్దకే పంపిణీ చేయబడుతుంది."
+      ],
+      "helpline": "1902",
+      "last_updated": "2026-07-03"
     },
     {
       "id": "widow-pension-006",
@@ -150,7 +243,24 @@
         "బ్యాంక్ ఖాతా వివరాలు",
         "స్థానికంగా అవసరమైన ఇతర ధృవీకరణ పత్రాలు"
       ],
-      "language_support": ["en", "te"]
+      "language_support": ["en", "te"],
+      "official_website": "https://sspensions.ap.gov.in",
+      "application_mode_en": "Online through Secretariat",
+      "application_mode_te": "సచివాలయం ద్వారా ఆన్లైన్",
+      "application_process_en": [
+        "Apply through the Village/Ward Secretariat.",
+        "Submit Aadhaar card, husband's death certificate, and residential proof.",
+        "The Secretariat staff will perform verification.",
+        "Upon approval, monthly pension is delivered directly to the beneficiary."
+      ],
+      "application_process_te": [
+        "గ్రామ/వార్డు సచివాలయం ద్వారా దరఖాస్తు చేసుకోండి.",
+        "ఆధార్ కార్డు, భర్త మరణ ధృవీకరణ పత్రం మరియు నివాస రుజువును సమర్పించండి.",
+        "సచివాలయ సిబ్బంది ధృవీకరణ ప్రక్రియను నిర్వహిస్తారు.",
+        "ఆమోదం పొందిన తర్వాత, నెలవారీ పెన్షన్ నేరుగా లబ్ధిదారునికి పంపిణీ చేయబడుతుంది."
+      ],
+      "helpline": "1902",
+      "last_updated": "2026-07-03"
     }
   ]
 }
