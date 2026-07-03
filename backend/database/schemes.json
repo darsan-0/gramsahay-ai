@@ -3,154 +3,152 @@
     {
       "id": "pm-kisan-001",
       "category": "agriculture",
-      "scheme_name_en": "PM Kisan Samman Nidhi",
-      "scheme_name_te": "పీఎం కిసాన్ సమ్మాన్ నిధి",
+      "scheme_name_en": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+      "scheme_name_te": "పీఎం-కిసాన్ (ప్రధాన్ మంత్రి కిసాన్ సమ్మాన్ నిధి)",
       "category_en": "Agriculture",
       "category_te": "వ్యవసాయం",
-      "eligibility_en": "Small and marginal farmer families with cultivable land as per land records of states/UTs. Beneficiary must not fall in excluded categories (institutional land holders, higher income categories as defined by scheme guidelines).",
-      "eligibility_te": "రాష్ట్రాలు / కేంద్రపాలిత ప్రాంతాల భూమి రికార్డుల ప్రకారం సాగవచ్చు భూమి ఉన్న చిన్న మరియు సన్నకారు రైతు కుటుంబాలు. లబ్ధిదారుడు మినహాయింపు వర్గాలలో (సంస్థాగత భూస్వాములు, పథక మార్గదర్శకాల ప్రకారం ఉన్నత ఆదాయ వర్గాలు) ఉండకూడదు.",
-      "benefits_en": "Direct income support of ₹6,000 per year in three equal installments of ₹2,000 each, credited to Aadhaar-linked bank accounts.",
-      "benefits_te": "సంవత్సరానికి ₹6,000 నేరుగా ఆదాయ మద్దతు — మూడు సమాన వాయిదాలలో ప్రతి వాయిదా ₹2,000 చొప్పున, ఆధార్‌కు అనుసంధానమైన బ్యాంక్ ఖాతాలకు జమ.",
+      "eligibility_en": "Landholding farmer families with cultivable land as per PM-KISAN guidelines and verified land records. Applicants must not fall under exclusion categories notified by Government of India.",
+      "eligibility_te": "పీఎం-కిసాన్ మార్గదర్శకాలు మరియు ధృవీకరించిన భూమి రికార్డుల ప్రకారం సాగుభూమి కలిగిన రైతు కుటుంబాలు అర్హులు. భారత ప్రభుత్వం ప్రకటించిన మినహాయింపు వర్గాల్లో ఉండకూడదు.",
+      "benefits_en": "₹6,000 per year in three installments of ₹2,000 each through Direct Benefit Transfer to Aadhaar-seeded bank accounts.",
+      "benefits_te": "ఆధార్-లింక్ చేసిన బ్యాంక్ ఖాతాలకు నేరుగా లబ్ధి బదిలీ ద్వారా సంవత్సరానికి ₹6,000 (ప్రతి వాయిదా ₹2,000 చొప్పున 3 విడతలు).",
       "documents_en": [
         "Aadhaar card",
-        "Bank account details (passbook / cancelled cheque)",
-        "Land ownership records",
-        "Citizenship / residence proof as required by state"
+        "Land records / pattadar details",
+        "Bank account passbook (Aadhaar-seeded)",
+        "Mobile number for OTP/status updates"
       ],
       "documents_te": [
         "ఆధార్ కార్డు",
-        "బ్యాంక్ ఖాతా వివరాలు (పాస్‌బుక్ / రద్దు చెక్)",
-        "భూమి యజమాన్య రికార్డులు",
-        "రాష్ట్రం అవసరమని పేర్కొన్న పౌరసత్వం / నివాస రుజువు"
+        "భూమి రికార్డులు / పట్టాదార్ వివరాలు",
+        "బ్యాంక్ పాస్‌బుక్ (ఆధార్ సీడింగ్‌తో)",
+        "ఓటీపీ/స్థితి కోసం మొబైల్ నంబర్"
       ],
       "language_support": ["en", "te"]
     },
     {
       "id": "rythu-bharosa-002",
       "category": "agriculture",
-      "scheme_name_en": "YSR Rythu Bharosa",
-      "scheme_name_te": "వైఎస్ఆర్ రైతు భరోసా",
+      "scheme_name_en": "Dr. YSR Rythu Bharosa - PM-KISAN (Andhra Pradesh)",
+      "scheme_name_te": "డా. వైఎస్ఆర్ రైతు భరోసా - పీఎం-కిసాన్ (ఆంధ్రప్రదేశ్)",
       "category_en": "Agriculture",
       "category_te": "వ్యవసాయం",
-      "eligibility_en": "Farmers in Andhra Pradesh including tenant farmers and agricultural labourers as per state scheme rules; annual financial assistance subject to state eligibility lists.",
-      "eligibility_te": "ఆంధ్రప్రదేశ్‌లోని రైతులు — రాష్ట్ర పథక నియమాల ప్రకారం కౌలుదారు రైతులు మరియు వ్యవసాయ కూలీలు సహా; రాష్ట్ర అర్హత జాబితాల ఆధారంగా వార్షిక ఆర్థిక సహాయం.",
-      "benefits_en": "Financial assistance for farmers (including support components for inputs and tenant/labour categories as per current state policy).",
-      "benefits_te": "రైతులకు ఆర్థిక సహాయం (ప్రస్తుత రాష్ట్ర విధానం ప్రకారం ఇన్‌పుట్లు మరియు కౌలుదారు / కూలీ వర్గాలకు మద్దతు అంశాలు సహా).",
+      "eligibility_en": "Eligible farmer households in Andhra Pradesh as per state beneficiary lists and land/tenant verification workflows used in the Rythu Bharosa system.",
+      "eligibility_te": "రాష్ట్ర లబ్ధిదారుల జాబితాలు మరియు రైతు భరోసా వ్యవస్థలో ఉండే భూమి/కౌలు ధృవీకరణ ప్రక్రియల ప్రకారం అర్హత కలిగిన ఆంధ్రప్రదేశ్ రైతు కుటుంబాలు.",
+      "benefits_en": "State farmer support delivered with PM-KISAN convergence as per notified AP disbursement schedule and beneficiary category rules.",
+      "benefits_te": "ప్రకటించిన ఏపీ చెల్లింపు షెడ్యూల్ మరియు వర్గాల నిబంధనల ప్రకారం పీఎం-కిసాన్ సమన్వయంతో రాష్ట్ర రైతు ఆర్థిక మద్దతు.",
       "documents_en": [
-        "White ration card / family details",
-        "Aadhaar",
-        "Land passbook or tenancy proof where applicable",
-        "Bank account linked to beneficiary"
+        "Aadhaar card",
+        "Land records / pattadar passbook or tenant proof (if applicable)",
+        "Bank account details",
+        "Ration/family details as required for verification"
       ],
       "documents_te": [
-        "తెలుపు రేషన్ కార్డు / కుటుంబ వివరాలు",
-        "ఆధార్",
-        "భూమి పాస్‌బుక్ లేదా వర్తించిన చోట కౌలు రుజువు",
-        "లబ్ధిదారుకు అనుసంధానమైన బ్యాంక్ ఖాతా"
+        "ఆధార్ కార్డు",
+        "భూమి రికార్డులు / పట్టాదార్ పాస్‌బుక్ లేదా కౌలు రుజువు (వర్తిస్తే)",
+        "బ్యాంక్ ఖాతా వివరాలు",
+        "ధృవీకరణకు అవసరమైన రేషన్/కుటుంబ వివరాలు"
       ],
       "language_support": ["en", "te"]
     },
     {
       "id": "jvd-003",
       "category": "education",
-      "scheme_name_en": "Jagananna Vidya Deevena",
-      "scheme_name_te": "జగనన్న విద్యా దీవెన",
+      "scheme_name_en": "AP Post-Matric Scholarships (RTF/MTF) - JnanaBhumi",
+      "scheme_name_te": "ఏపీ పోస్ట్ మ్యాట్రిక్ స్కాలర్‌షిప్‌లు (RTF/MTF) - జ్ఞానభూమి",
       "category_en": "Education",
       "category_te": "విద్య",
-      "eligibility_en": "Students pursuing ITI, polytechnic, degree and above in government or eligible private institutions in Andhra Pradesh; family income and course eligibility as per government orders.",
-      "eligibility_te": "ఆంధ్రప్రదేశ్‌లో ప్రభుత్వ లేదా అర్హత గల ప్రైవేట్ సంస్థల్లో ఐటీఐ, పాలిటెక్నిక్, డిగ్రీ మరియు అంతకంటే ఎక్కువ చదివే విద్యార్థులు; కుటుంబ ఆదాయం మరియు కోర్సు అర్హత ప్రభుత్వ ఉత్తర్వుల ప్రకారం.",
-      "benefits_en": "Full fee reimbursement for eligible courses and students, credited through institutional or direct benefit transfer mechanisms as per state norms.",
-      "benefits_te": "అర్హత గల కోర్సులు మరియు విద్యార్థులకు పూర్తి ఫీజు వాపసు; రాష్ట్ర నియమాల ప్రకారం సంస్థాగత లేదా నేరుగా లబ్ధి బదిలీ ద్వారా జమ.",
+      "eligibility_en": "Eligible AP domicile students from notified categories (SC/ST/BC/EBC/Kapu/Minority/Differently Abled) pursuing ITI, Polytechnic, Degree and above courses in approved institutions, subject to current government guidelines.",
+      "eligibility_te": "ప్రకటించిన వర్గాలకు చెందిన అర్హులైన ఏపీ స్థానిక విద్యార్థులు (SC/ST/BC/EBC/Kapu/మైనారిటీ/వికలాంగులు) ఆమోదిత సంస్థల్లో ITI, పాలిటెక్నిక్, డిగ్రీ మరియు పై కోర్సులు చదువుతూ, ప్రస్తుత ప్రభుత్వ మార్గదర్శకాలను పాటిస్తే అర్హులు.",
+      "benefits_en": "RTF provides tuition fee reimbursement; MTF provides annual maintenance support for food/hostel expenses as per current AP scholarship notifications.",
+      "benefits_te": "RTF ద్వారా ట్యూషన్ ఫీజు రీయింబర్స్‌మెంట్, MTF ద్వారా ఆహారం/హాస్టల్ ఖర్చులకు వార్షిక నిర్వహణ సహాయం ప్రస్తుత ఏపీ స్కాలర్‌షిప్ నోటిఫికేషన్‌ల ప్రకారం అందుతుంది.",
       "documents_en": [
-        "Income certificate",
-        "Bonafide certificate from institution",
-        "Aadhaar of student and parent",
-        "Caste / community certificate if applicable",
-        "Bank account details"
+        "JSAF / student scholarship application details",
+        "Aadhaar (student and parent/guardian)",
+        "Income and caste/community certificate (as applicable)",
+        "Bonafide/admission details from institution",
+        "Bank account details as per disbursal mode"
       ],
       "documents_te": [
-        "ఆదాయ ప్రమాణపత్రం",
-        "సంస్థ నుండి బోనాఫైడ్ ప్రమాణపత్రం",
-        "విద్యార్థి మరియు తల్లిదండ్రుల ఆధార్",
-        "వర్తిస్తే కులం / సముదాయ ప్రమాణపత్రం",
-        "బ్యాంక్ ఖాతా వివరాలు"
+        "JSAF / విద్యార్థి స్కాలర్‌షిప్ దరఖాస్తు వివరాలు",
+        "ఆధార్ (విద్యార్థి మరియు తల్లిదండ్రులు/గార్డియన్)",
+        "ఆదాయం మరియు కులం/సముదాయం సర్టిఫికెట్ (వర్తిస్తే)",
+        "సంస్థ నుండి బోనాఫైడ్/ప్రవేశ వివరాలు",
+        "చెల్లింపు విధానానికి అనుగుణంగా బ్యాంక్ ఖాతా వివరాలు"
       ],
       "language_support": ["en", "te"]
     },
     {
       "id": "ayushman-004",
       "category": "health",
-      "scheme_name_en": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB-PMJAY)",
-      "scheme_name_te": "ఆయుష్మాన్ భారత్ ప్రధాన్ మంత్రి జన్ ఆరోగ్య యోజన (ఏబీ-పీఎంజేవై)",
+      "scheme_name_en": "Dr. NTR Vaidya Seva (Andhra Pradesh)",
+      "scheme_name_te": "డా. ఎన్టీఆర్ వైద్య సేవ (ఆంధ్రప్రదేశ్)",
       "category_en": "Health",
       "category_te": "ఆరోగ్యం",
-      "eligibility_en": "Families identified as per SECC database and expanded categories for states that have adopted PM-JAY criteria; covers vulnerable families for secondary and tertiary hospital care.",
-      "eligibility_te": "ఎస్ఈసీసీ డేటాబేస్ ప్రకారం గుర్తించిన కుటుంబాలు మరియు పీఎంజేవై ప్రమాణాలను అంగీకరించిన రాష్ట్రాల్లో విస్తరింపబడిన వర్గాలు; ద్వితీయ మరియు తృతీయ ఆసుపత్రి సంరక్షణకు హానికర కుటుంబాలకు వర్తిస్తుంది.",
-      "benefits_en": "Health cover up to ₹5 lakh per family per year for listed secondary and tertiary care procedures at empanelled hospitals.",
-      "benefits_te": "ప్యానెల్ చేసిన ఆసుపత్రులలో జాబితా చేయబడిన ద్వితీయ మరియు తృతీయ సంరక్షణ విధానాలకు కుటుంబానికి సంవత్సరానికి ₹5 లక్షల వరకు ఆరోగ్య కవరేజ్.",
+      "eligibility_en": "BPL families in Andhra Pradesh identified through white ration card and state eligibility records under the Dr. NTR Vaidya Seva framework.",
+      "eligibility_te": "డా. ఎన్టీఆర్ వైద్య సేవ విధానంలో వైట్ రేషన్ కార్డు మరియు రాష్ట్ర అర్హత రికార్డుల ద్వారా గుర్తించిన ఏపీ బీపీఎల్ కుటుంబాలు అర్హులు.",
+      "benefits_en": "Cashless treatment for listed procedures at empanelled government and private hospitals under AP's state health assurance system.",
+      "benefits_te": "ఏపీ రాష్ట్ర ఆరోగ్య భరోసా విధానంలో ఎంపానెల్ చేసిన ప్రభుత్వ మరియు ప్రైవేట్ ఆసుపత్రుల్లో జాబితా చేసిన చికిత్సలకు నగదు రహిత వైద్యం.",
       "documents_en": [
-        "PM-JAY e-card or eligibility verification",
+        "White ration card / family ID details",
         "Aadhaar",
-        "Ration card / SECC reference where applicable"
+        "Referral and medical records as required by treating hospital"
       ],
       "documents_te": [
-        "పీఎంజేవై ఇ-కార్డు లేదా అర్హత ధృవీకరణ",
+        "వైట్ రేషన్ కార్డు / కుటుంబ ఐడి వివరాలు",
         "ఆధార్",
-        "రేషన్ కార్డు / వర్తిస్తే ఎస్ఈసీసీ సూచన"
+        "చికిత్సాసంస్థ కోరిన రిఫరల్ మరియు మెడికల్ రికార్డులు"
       ],
       "language_support": ["en", "te"]
     },
     {
       "id": "ignoaps-005",
       "category": "pension",
-      "scheme_name_en": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
-      "scheme_name_te": "ఇందిరా గాంధీ జాతీయ వృద్ధాప్య పెన్షన్ పథకం (ఐజీఎన్ఓఏపీఎస్)",
+      "scheme_name_en": "NTR Bharosa Pension Scheme (Social Security Pensions)",
+      "scheme_name_te": "ఎన్టీఆర్ భరోసా పెన్షన్ పథకం (సామాజిక భద్రత పెన్షన్లు)",
       "category_en": "Pension",
       "category_te": "పెన్షన్",
-      "eligibility_en": "BPL persons aged 60 years or above as per state social welfare department norms and BPL identification.",
-      "eligibility_te": "రాష్ట్ర సామాజిక సంక్షేమ శాఖ నియమాలు మరియు బీపీఎల్ గుర్తింపు ప్రకారం 60 సంవత్సరాలు లేదా అంతకంటే ఎక్కువ వయస్సు గల బీపీఎల్ వ్యక్తులు.",
-      "benefits_en": "Monthly pension amount as fixed by central and state contribution (amount varies by state rules and revisions).",
-      "benefits_te": "కేంద్ర మరియు రాష్ట్ర వాటా నిర్ణయించిన నెలవారీ పెన్షన్ మొత్తం (మొత్తం రాష్ట్ర నియమాలు మరియు సవరణల ప్రకారం మారవచ్చు).",
+      "eligibility_en": "Eligible vulnerable residents of Andhra Pradesh under notified categories (old age, widow, disability and other approved categories) through Village/Ward Secretariat verification under current GOs.",
+      "eligibility_te": "ప్రస్తుత ప్రభుత్వ ఉత్తర్వుల ప్రకారం గ్రామ/వార్డు సచివాలయ ధృవీకరణ ద్వారా అర్హత గల ఏపీ బలహీన వర్గాల నివాసులు (వృద్ధాప్యం, వితంతువు, వికలాంగులు మరియు ఇతర ఆమోదిత వర్గాలు).",
+      "benefits_en": "Monthly social security pension as per category-wise rates notified by AP Government under NTR Bharosa.",
+      "benefits_te": "ఏపీ ప్రభుత్వం ఎన్టీఆర్ భరోసా కింద ప్రకటించిన వర్గాల వారీ రేట్ల ప్రకారం నెలవారీ సామాజిక భద్రత పెన్షన్.",
       "documents_en": [
-        "Age proof",
-        "BPL certificate / inclusion in eligible list",
-        "Aadhaar",
-        "Bank account",
-        "Passport-size photographs"
+        "Aadhaar card",
+        "Category proof (age/disability/widow etc. as applicable)",
+        "Residence details and family information",
+        "Bank account details for pension disbursal"
       ],
       "documents_te": [
-        "వయస్సు రుజువు",
-        "బీపీఎల్ ప్రమాణపత్రం / అర్హత జాబితాలో చేరిక",
-        "ఆధార్",
-        "బ్యాంక్ ఖాతా",
-        "పాస్‌పోర్ట్ పరిమాణ ఫోటోలు"
+        "ఆధార్ కార్డు",
+        "వర్గానికి అనుగుణమైన రుజువులు (వయస్సు/వికలాంగత/వితంతువు మొదలైనవి)",
+        "నివాస మరియు కుటుంబ వివరాలు",
+        "పెన్షన్ చెల్లింపుల కోసం బ్యాంక్ ఖాతా వివరాలు"
       ],
       "language_support": ["en", "te"]
     },
     {
       "id": "widow-pension-006",
       "category": "pension",
-      "scheme_name_en": "State Widow Pension Scheme (illustrative)",
-      "scheme_name_te": "రాష్ట్ర వితంతువు పెన్షన్ పథకం (ఉదాహరణ)",
+      "scheme_name_en": "NTR Bharosa - Widow Pension Category",
+      "scheme_name_te": "ఎన్టీఆర్ భరోసా - వితంతువు పెన్షన్ వర్గం",
       "category_en": "Pension",
       "category_te": "పెన్షన్",
-      "eligibility_en": "Widows in the economically weaker sections meeting state-defined income and residence criteria.",
-      "eligibility_te": "రాష్ట్రం నిర్వచించిన ఆదాయ మరియు నివాస ప్రమాణాలను తీర్చే ఆర్థికంగా బలహీన వర్గాల వితంతువులు.",
-      "benefits_en": "Monthly financial assistance for livelihood support as per state government notification.",
-      "benefits_te": "రాష్ట్ర ప్రభుత్వ నోటిఫికేషన్ ప్రకారం జీవనోపాధి మద్దతుకు నెలవారీ ఆర్థిక సహాయం.",
+      "eligibility_en": "Widowed women in Andhra Pradesh meeting current NTR Bharosa social security eligibility criteria and local verification requirements.",
+      "eligibility_te": "ప్రస్తుత ఎన్టీఆర్ భరోసా సామాజిక భద్రత అర్హత ప్రమాణాలు మరియు స్థానిక ధృవీకరణ నిబంధనలు తీరిన ఆంధ్రప్రదేశ్ వితంతు మహిళలు.",
+      "benefits_en": "Monthly pension support under the widow category of NTR Bharosa as per the latest AP Government notified pension rates.",
+      "benefits_te": "ఏపీ ప్రభుత్వం ప్రకటించిన తాజా పెన్షన్ రేట్ల ప్రకారం ఎన్టీఆర్ భరోసా వితంతు వర్గంలో నెలవారీ పెన్షన్ సహాయం.",
       "documents_en": [
-        "Death certificate of spouse",
-        "Income certificate",
-        "Residence proof",
-        "Aadhaar",
-        "Bank account details"
+        "Aadhaar card",
+        "Spouse death certificate",
+        "Residence and family details",
+        "Bank account details",
+        "Any additional local verification document as required"
       ],
       "documents_te": [
-        "జీవిత భాగస్వామి మరణ ప్రమాణపత్రం",
-        "ఆదాయ ప్రమాణపత్రం",
-        "నివాస రుజువు",
-        "ఆధార్",
-        "బ్యాంక్ ఖాతా వివరాలు"
+        "ఆధార్ కార్డు",
+        "భర్త మరణ ధృవీకరణ పత్రం",
+        "నివాస మరియు కుటుంబ వివరాలు",
+        "బ్యాంక్ ఖాతా వివరాలు",
+        "స్థానికంగా అవసరమైన ఇతర ధృవీకరణ పత్రాలు"
       ],
       "language_support": ["en", "te"]
     }

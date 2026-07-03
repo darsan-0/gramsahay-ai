@@ -12,20 +12,16 @@ while keeping `category_code` for filtering and icons.
 from flask import Blueprint, current_app, jsonify, request
 
 from services.translation_service import localize_scheme_list, normalize_ui_language
-from utils.helpers import filter_schemes_by_category, load_json_file
+from utils.helpers import filter_schemes_by_category, get_cached_schemes
 
 # url_prefix is applied in app.py registration: all routes live under /api/schemes
 scheme_bp = Blueprint("schemes", __name__, url_prefix="/api/schemes")
 
 
 def _load_schemes_list():
-    """Load the schemes array from configured JSON path."""
+    """Load the schemes array from configured JSON path using memory caching."""
     path = current_app.config["SCHEMES_JSON_PATH"]
-    data = load_json_file(path)
-    schemes = data.get("schemes", [])
-    if not isinstance(schemes, list):
-        return []
-    return schemes
+    return get_cached_schemes(path)
 
 
 def _lang_from_request() -> str:

@@ -46,6 +46,8 @@ export interface ChatApiResponse {
   requested_language?: string;
   recommendation_preview?: unknown;
   error?: string;
+  active_scheme_id?: string | null;
+  user_profile?: Record<string, any>;
 }
 
 /** Thrown when the server returns a non-OK status or invalid JSON */

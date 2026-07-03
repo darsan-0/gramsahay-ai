@@ -25,9 +25,15 @@ def create_app(config_name: Optional[str] = None) -> Flask:
     """
     Application factory: creates the Flask app and wires extensions + blueprints.
 
-    Using a factory keeps tests and future workers (Celery, etc.) able to build
+    Using a factory keeps tests and future workers able to build
     the same app object without import side effects.
     """
+    import logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format="[%(asctime)s] %(levelname)s in %(name)s: %(message)s"
+    )
+
     env = (config_name or os.environ.get("FLASK_ENV", "development")).lower()
     config_class = config_by_name.get(env, config_by_name["default"])
 

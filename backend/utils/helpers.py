@@ -71,3 +71,30 @@ def filter_schemes_by_category(schemes: List[Dict[str, Any]], category: str) -> 
         if scheme_cat == target:
             result.append(scheme)
     return result
+
+
+_SCHEMES_CACHE = None
+_LAST_MODIFIED_TIME = 0.0
+
+def get_cached_schemes(file_path: str) -> List[Dict[str, Any]]:
+    """
+    Load schemes list with sliding file-timestamp caching.
+    Reads from disk only on first access or when file timestamp changes.
+    """
+    global _SCHEMES_CACHE, _LAST_MODIFIED_TIME
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f"JSON database not found: {file_path}")
+
+    try:
+        mtime = os.path.getmtime(file_path)
+        if _SCHEMES_CACHE is None or mtime > _LAST_MODIFIED_TIME:
+            data = load_json_file(file_path)
+            _SCHEMES_CACHE = data.get("schemes", [])
+            _LAST_MODIFIED_TIME = mtime
+    except Exception:
+        # Fail-safe fallback: direct file read
+        if _SCHEMES_CACHE is None:
+            data = load_json_file(file_path)
+            _SCHEMES_CACHE = data.get("schemes", [])
+
+    return list(_SCHEMES_CACHE)
