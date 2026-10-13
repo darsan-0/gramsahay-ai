@@ -88,6 +88,32 @@ class ChatbotSystemTestCase(unittest.TestCase):
         self.assertEqual(len(data["schemes"]), 1)
         self.assertEqual(data["schemes"][0]["id"], "jvd-003")
 
+    def test_active_scheme_apply_followup_falls_back_to_steps(self):
+        """Test how-to-apply follow-ups explain the selected scheme even without AI."""
+        self.mock_generate.return_value = None
+
+        response = self.client.post(
+            "/api/chat",
+            json={
+                "message": "How do I apply for this?",
+                "language": "en",
+                "context": {
+                    "active_scheme_id": "jvd-003",
+                    "history": [
+                        {"role": "user", "text": "I want scholarships"},
+                        {"role": "assistant", "text": "AP Post-Matric Scholarships"}
+                    ]
+                }
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data["active_scheme_id"], "jvd-003")
+        self.assertEqual(len(data["schemes"]), 1)
+        reply = data.get("reply", "")
+        self.assertIn("Application Process", reply)
+        self.assertIn("Visit the official JnanaBhumi portal", reply)
+
     def test_multiple_schemes_clarification(self):
         """Test ambiguous follow-up triggers clarification request."""
         # Ensure we patch out the Groq call, so we fallback to dynamic clarifier

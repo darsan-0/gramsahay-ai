@@ -281,7 +281,53 @@ def filter_schemes_for_intent(intent: str, schemes: List[Dict[str, Any]]) -> Lis
     return []
 
 
-def build_chat_reply(intent: Optional[str], schemes: List[Dict[str, Any]], language: str) -> str:
+def build_scheme_application_reply(scheme: Dict[str, Any], language: str) -> str:
+    """Answer a follow-up like 'how do I apply?' using the selected scheme's data."""
+    lang = normalize_ui_language(language)
+    loc = localize_scheme_record(scheme, lang)
+    name = loc.get("scheme_name") or "Scheme"
+    website = (scheme.get("official_website") or "").strip()
+    mode = (scheme.get("application_mode_te") if lang == "te" else scheme.get("application_mode_en")) or scheme.get("application_mode") or "Not Available"
+    process_steps = (scheme.get("application_process_te") if lang == "te" else scheme.get("application_process_en")) or scheme.get("application_process") or []
+    docs = (scheme.get("documents_te") if lang == "te" else scheme.get("documents_en")) or scheme.get("documents") or []
+
+    if lang == "te":
+        lines = [f"{name} దరఖాస్తు ఎలా చేయాలి?", "", "దరఖాస్తు ప్రక్రియ:"]
+        if isinstance(process_steps, list) and process_steps:
+            for index, step in enumerate(process_steps, start=1):
+                lines.append(f"{index}. {step}")
+        else:
+            lines.append("ఈ సమాచారం ప్రస్తుత పథక డేటాలో అందుబాటులో లేదు.")
+
+        if website:
+            lines.extend(["", "అధికారిక వెబ్‌సైట్:", website])
+        if isinstance(docs, list) and docs:
+            lines.extend(["", "అవసరమైన పత్రాలు:"])
+            for doc in docs:
+                lines.append(f"• {doc}")
+        if mode and mode != "Not Available":
+            lines.extend(["", f"దరఖాస్తు విధానం: {mode}"])
+        return "\n".join(lines)
+
+    lines = [f"How to apply for {name}?", "", "Application Process:"]
+    if isinstance(process_steps, list) and process_steps:
+        for index, step in enumerate(process_steps, start=1):
+            lines.append(f"{index}. {step}")
+    else:
+        lines.append("This information is not available in the current scheme data.")
+
+    if website:
+        lines.extend(["", "Official Website:", website])
+    if isinstance(docs, list) and docs:
+        lines.extend(["", "Required Documents:"])
+        for doc in docs:
+            lines.append(f"• {doc}")
+    if mode and mode != "Not Available":
+        lines.extend(["", f"Application Mode: {mode}"])
+    return "\n".join(lines)
+
+
+def build_chat_reply(intent: Optional[str], schemes: List[Dict[str, Any]], language: str, message: Optional[str] = None) -> str:
     """
     Build a short, factual reply string from real scheme rows (not generative AI).
 
@@ -289,6 +335,18 @@ def build_chat_reply(intent: Optional[str], schemes: List[Dict[str, Any]], langu
     requested UI language. Used by HTTP clients that expect a `reply` field.
     """
     lang = normalize_ui_language(language)
+
+    if message and any(keyword in (message or "").lower() for keyword in [
+        "how do i apply",
+        "how to apply",
+        "apply for this",
+        "apply it",
+        "application process",
+        "where do i apply",
+        "how to register",
+        "how can i apply",
+    ]) and len(schemes) == 1:
+        return build_scheme_application_reply(schemes[0], language)
 
     if intent is None:
         if lang == "te":

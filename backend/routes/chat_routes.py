@@ -270,7 +270,10 @@ def chat_recommendations():
     # 5. Fallback if API key is missing or request fails
     if not ai_reply:
         logger.warning("[ChatAPI] Groq is unavailable. Falling back to rules engine.")
-        ai_reply = build_chat_reply(category, matched_schemes, language)
+        if is_follow_up and len(matched_schemes) == 1:
+            ai_reply = build_chat_reply(category, matched_schemes, language, message)
+        else:
+            ai_reply = build_chat_reply(category, matched_schemes, language, message)
         engine = "keyword_rules_fallback"
         status = "matched" if matched_schemes else "no_match"
         response_type = "schemes" if matched_schemes else "rules_fallback"
