@@ -47,7 +47,17 @@ def save_json_file(file_path: str, data: Any) -> None:
 
 def normalize_category(category: str) -> str:
     """Lowercase and strip category for consistent filtering."""
-    return (category or "").strip().lower()
+    cat = (category or "").strip().lower()
+    aliases = {
+        "student": "education",
+        "students": "education",
+        "scholarship": "education",
+        "scholarships": "education",
+        "farmer": "agriculture",
+        "farmers": "agriculture",
+        "pensions": "pension",
+    }
+    return aliases.get(cat, cat)
 
 
 def filter_schemes_by_category(schemes: List[Dict[str, Any]], category: str) -> List[Dict[str, Any]]:

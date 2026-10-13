@@ -20,9 +20,11 @@ load_dotenv()
 load_dotenv(Path(__file__).resolve().parent.parent / ".env", override=False)
 
 # Default Groq model
-DEFAULT_GROQ_MODEL = "llama-3.1-8b-instant"
+DEFAULT_GROQ_MODEL = "openai/gpt-oss-20b"
+FALLBACK_GROQ_MODELS = ["openai/gpt-oss-20b", "qwen/qwen3.8-27b", "openai/gpt-oss-120b"]
 DEPRECATED_GROQ_MODELS = {
     "llama3-8b-8192": DEFAULT_GROQ_MODEL,
+    "llama-3.1-8b-instant": DEFAULT_GROQ_MODEL,
 }
 
 SYSTEM_PROMPT_EN = """
@@ -286,30 +288,43 @@ def generate_conversational_reply(
         use_model = _select_model(model)
         print("Groq selected model:", use_model)
 
-        completion = client.chat.completions.create(
-            model=use_model,
-            messages=_build_messages(
-                user_message,
-                language,
-                schemes
-            ),
-            temperature=0.6,
-            max_tokens=400
-        )
+        models_to_try = [use_model] + [m for m in FALLBACK_GROQ_MODELS if m != use_model]
+        last_exc = None
+        for cand_model in models_to_try:
+            try:
+                completion = client.chat.completions.create(
+                    model=cand_model,
+                    messages=_build_messages(
+                        user_message,
+                        language,
+                        schemes
+                    ),
+                    temperature=0.6,
+                    max_tokens=400
+                )
 
-        response = (
-            completion.choices[0]
-            .message.content
-            .strip()
-        )
+                response = (
+                    completion.choices[0]
+                    .message.content
+                    .strip()
+                )
 
-        response = re.sub(r"^```[a-zA-Z]*", "", response)
-        response = re.sub(r"```$", "", response)
+                response = re.sub(r"^```[a-zA-Z]*", "", response)
+                response = re.sub(r"```$", "", response)
 
-        return {
-            "ok": True,
-            "text": response
-        }
+                return {
+                    "ok": True,
+                    "text": response
+                }
+            except Exception as exc:
+                last_exc = exc
+                err_str = str(exc).lower()
+                if "not found" in err_str or "does not exist" in err_str or "404" in err_str:
+                    continue
+                raise exc
+
+        if last_exc:
+            raise last_exc
 
     except Exception as exc:
         print("Groq Error:", exc)
@@ -482,17 +497,27 @@ def generate_ai_response_contextual(
             "content": f"{_user_language_instruction(language)}\n\n{user_message}"
         })
 
-        completion = client.chat.completions.create(
-            model=use_model,
-            messages=messages_list,
-            temperature=0.4,  # lower temperature for more factual responses
-            max_tokens=450
-        )
+        models_to_try = [use_model] + [m for m in FALLBACK_GROQ_MODELS if m != use_model]
+        for cand_model in models_to_try:
+            try:
+                completion = client.chat.completions.create(
+                    model=cand_model,
+                    messages=messages_list,
+                    temperature=0.4,  # lower temperature for more factual responses
+                    max_tokens=450
+                )
 
-        response = completion.choices[0].message.content.strip()
-        response = re.sub(r"^```[a-zA-Z]*", "", response)
-        response = re.sub(r"```$", "", response)
-        return response
+                response = completion.choices[0].message.content.strip()
+                response = re.sub(r"^```[a-zA-Z]*", "", response)
+                response = re.sub(r"```$", "", response)
+                return response
+            except Exception as exc:
+                err_str = str(exc).lower()
+                if "not found" in err_str or "does not exist" in err_str or "404" in err_str:
+                    continue
+                raise exc
+
+        return None
 
     except Exception as exc:
         print("Groq Contextual Error:", exc)

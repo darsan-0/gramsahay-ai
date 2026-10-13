@@ -186,6 +186,87 @@ class ChatbotSystemTestCase(unittest.TestCase):
         os.environ.pop("LIMIT_CHAT_WINDOW", None)
         self.app.config["TEST_RATE_LIMIT"] = False
 
+    def test_schemes_related_to_students(self):
+        """Test 'schemes related to students' returns education scheme and NOT pension."""
+        response = self.client.post(
+            "/api/chat",
+            json={
+                "message": "schemes related to students",
+                "language": "en"
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data.get("category"), "education")
+        scheme_ids = [s["id"] for s in data.get("schemes", [])]
+        self.assertIn("jvd-003", scheme_ids)
+        self.assertNotIn("ignoaps-005", scheme_ids)
+        self.assertNotIn("widow-pension-006", scheme_ids)
+
+    def test_student_schemes_phrase(self):
+        """Test 'student schemes' correctly returns education category."""
+        response = self.client.post(
+            "/api/chat",
+            json={
+                "message": "student schemes",
+                "language": "en"
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data.get("category"), "education")
+        self.assertEqual(data["schemes"][0]["id"], "jvd-003")
+
+    def test_farmer_schemes_phrase(self):
+        """Test 'schemes for farmers' returns farmer schemes and NOT pension."""
+        response = self.client.post(
+            "/api/chat",
+            json={
+                "message": "schemes for farmers",
+                "language": "en"
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data.get("category"), "farmer")
+        scheme_ids = [s["id"] for s in data.get("schemes", [])]
+        self.assertIn("pm-kisan-001", scheme_ids)
+        self.assertNotIn("ignoaps-005", scheme_ids)
+
+    def test_context_switching_from_pension_to_students(self):
+        """Test that asking about students switches away from previous pension context."""
+        response = self.client.post(
+            "/api/chat",
+            json={
+                "message": "What schemes are available for students?",
+                "language": "en",
+                "context": {
+                    "active_scheme_id": "ignoaps-005",
+                    "previous_scheme_ids": ["ignoaps-005"],
+                    "history": [
+                        {"role": "user", "text": "Tell me about pension"},
+                        {"role": "assistant", "text": "NTR Bharosa Pension Scheme"}
+                    ]
+                }
+            }
+        )
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data.get("category"), "education")
+        scheme_ids = [s["id"] for s in data.get("schemes", [])]
+        self.assertIn("jvd-003", scheme_ids)
+        self.assertNotIn("ignoaps-005", scheme_ids)
+
+    def test_schemes_by_student_category_endpoint(self):
+        """Test /api/schemes/category/student and students return education schemes."""
+        res1 = self.client.get("/api/schemes/category/student")
+        self.assertEqual(res1.status_code, 200)
+        self.assertGreater(res1.get_json().get("count", 0), 0)
+
+        res2 = self.client.get("/api/schemes/category/students")
+        self.assertEqual(res2.status_code, 200)
+        self.assertGreater(res2.get_json().get("count", 0), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

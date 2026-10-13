@@ -20,7 +20,7 @@ from services.translation_service import localize_scheme_record, normalize_ui_la
 # Intent labels (API-facing). Must stay stable for clients and future NLP.
 # ---------------------------------------------------------------------------
 INTENT_FARMER = "farmer"
-INTENT_STUDENT = "student"
+INTENT_STUDENT = "education"
 INTENT_PENSION = "pension"
 INTENT_WOMEN = "women"
 INTENT_HEALTH = "health"
@@ -33,15 +33,16 @@ SUPPORTED_INTENTS = [
     INTENT_WOMEN,
     INTENT_HEALTH,
     INTENT_EMPLOYMENT,
+    "student",
 ]
 
-# When two intents tie on keyword hits, prefer the earlier in this list.
+# When two intents tie on keyword hits, prefer specific domain topics without pension bias.
 _INTENT_TIE_BREAK_ORDER = [
-    INTENT_PENSION,
-    INTENT_HEALTH,
-    INTENT_FARMER,
     INTENT_STUDENT,
+    INTENT_FARMER,
     INTENT_WOMEN,
+    INTENT_HEALTH,
+    INTENT_PENSION,
     INTENT_EMPLOYMENT,
 ]
 
@@ -49,41 +50,78 @@ _INTENT_TIE_BREAK_ORDER = [
 _INTENT_KEYWORDS: Dict[str, List[str]] = {
     INTENT_FARMER: [
         "farmer",
+        "farmers",
         "agriculture",
+        "agricultural",
         "crop",
+        "crops",
         "farm",
+        "farming",
         "kisan",
         "cultivat",
         "rythu",
-        "agricultural",
         "రైతు",
+        "రైతులు",
         "వ్యవసాయ",
+        "పంట",
     ],
     INTENT_STUDENT: [
         "scholarship",
+        "scholarships",
         "student",
+        "students",
         "education",
         "study",
+        "studies",
         "school",
+        "schools",
         "college",
+        "colleges",
         "university",
         "fee",
+        "fees",
+        "tuition",
+        "hostel",
         "vidya",
+        "jnanabhumi",
+        "jvd",
+        "vidya deevena",
+        "vasathi deevena",
+        "post-matric",
+        "post matric",
+        "reimbursement",
         "విద్యార్థి",
+        "విద్యార్థులు",
+        "విద్యార్థిని",
         "విద్య",
         "చదువు",
+        "స్కాలర్‌షిప్",
+        "స్కాలర్‌షిప్‌లు",
+        "ఫీజు",
+        "హాస్టల్",
+        "జ్ఞానభూమి",
+        "విద్యా దీవెన",
+        "వసతి దీవెన",
     ],
     INTENT_PENSION: [
         "pension",
+        "pensions",
         "elderly",
         "senior citizen",
+        "senior citizens",
         "old age",
         "retire",
+        "retirement",
         "widow pension",
+        "widow pensions",
         "widow",
+        "widows",
         "old-age",
         "పెన్షన్",
+        "పెన్షన్లు",
         "వృద్ధ",
+        "వృద్ధాప్య",
+        "వితంతు",
     ],
     INTENT_WOMEN: [
         "women",
@@ -94,12 +132,17 @@ _INTENT_KEYWORDS: Dict[str, List[str]] = {
         "maternity",
         "mother",
         "widow",
+        "widows",
         "మహిళ",
+        "మహిళలు",
         "స్త్రీ",
+        "డ్వాక్రా",
     ],
     INTENT_HEALTH: [
         "hospital",
+        "hospitals",
         "health",
+        "healthcare",
         "insurance",
         "medical",
         "ayushman",
@@ -107,6 +150,8 @@ _INTENT_KEYWORDS: Dict[str, List[str]] = {
         "aarogy",
         "ఆరోగ్యం",
         "వైద్యం",
+        "ఆసుపత్రి",
+        "చికిత్స",
     ],
     INTENT_EMPLOYMENT: [
         "jobs",
@@ -123,15 +168,22 @@ _INTENT_KEYWORDS: Dict[str, List[str]] = {
         "labor",
         "ఉపాధి",
         "నిరుద్యోగ",
+        "కూలీ",
     ],
 }
 
 # JSON `category` field values used in schemes.json for direct category match.
 _DATA_CATEGORIES_BY_INTENT: Dict[str, List[str]] = {
     INTENT_FARMER: ["agriculture"],
+    "farmer": ["agriculture"],
+    "agriculture": ["agriculture"],
     INTENT_STUDENT: ["education"],
+    "student": ["education"],
+    "education": ["education"],
     INTENT_PENSION: ["pension"],
+    "pension": ["pension"],
     INTENT_HEALTH: ["health"],
+    "health": ["health"],
 }
 
 # For "women" intent: pick schemes whose text clearly relates to women / SHG / widow.
@@ -168,11 +220,19 @@ _EMPLOYMENT_SCHEME_TEXT_MARKERS = [
 # Telugu labels for intent codes in chat replies (manual copy, not MT).
 _INTENT_TOPIC_LABEL_TE: Dict[str, str] = {
     INTENT_FARMER: "రైతు / వ్యవసాయం",
+    "farmer": "రైతు / వ్యవసాయం",
+    "agriculture": "రైతు / వ్యవసాయం",
     INTENT_STUDENT: "విద్య / విద్యార్థులు",
+    "student": "విద్య / విద్యార్థులు",
+    "education": "విద్య / విద్యార్థులు",
     INTENT_PENSION: "పెన్షన్",
+    "pension": "పెన్షన్",
     INTENT_WOMEN: "మహిళా సంక్షేమం",
+    "women": "మహిళా సంక్షేమం",
     INTENT_HEALTH: "ఆరోగ్యం",
+    "health": "ఆరోగ్యం",
     INTENT_EMPLOYMENT: "ఉపాధి",
+    "employment": "ఉపాధి",
 }
 
 
@@ -431,7 +491,7 @@ def recommend_schemes_from_chat_message(
 
     lc = normalize_ui_language(language)
     localized_schemes = [localize_scheme_record(s, lc) for s in matched]
-    reply = build_chat_reply(intent, matched, language)
+    reply = build_chat_reply(intent, matched, language, message=message)
     return {
         "status": "matched",
         "category": intent,

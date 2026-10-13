@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from flask import Blueprint, current_app, has_app_context, jsonify, request
 
 from services.ai_service import generate_ai_response, generate_ai_response_contextual
-from services.recommendation_service import recommend_schemes_from_chat_message, build_chat_reply
+from services.recommendation_service import recommend_schemes_from_chat_message, build_chat_reply, detect_intent_category
 from services.translation_service import attach_language_metadata
 from utils.helpers import get_cached_schemes
 
@@ -91,37 +91,57 @@ def is_follow_up_query(message: str) -> bool:
     return any(kw in text for kw in keywords)
 
 
+SCHEME_EXPLICIT_KEYWORDS = {
+    "pm-kisan-001": [
+        "pm kisan", "pm-kisan", "pmkisan", "kisan samman nidhi", "samman nidhi",
+        "పీఎం కిసాన్", "పీఎం-కిసాన్", "కిసాన్ సమ్మాన్"
+    ],
+    "rythu-bharosa-002": [
+        "rythu bharosa", "ysr rythu bharosa", "రైతు భరోసా", "వైఎస్ఆర్ రైతు భరోసా"
+    ],
+    "jvd-003": [
+        "jnanabhumi", "jnana bhumi", "jvd", "post-matric", "post matric",
+        "vidya deevena", "vasathi deevena", "విద్యా దీవెన", "వసతి దీవెన",
+        "జ్ఞానభూమి", "పోస్ట్ మ్యాట్రిక్"
+    ],
+    "ayushman-004": [
+        "vaidya seva", "ntr vaidya seva", "ntr vaidya", "aarogyasri", "aarogya sri",
+        "వైద్య సేవ", "ఎన్టీఆర్ వైద్య సేవ", "ఆరోగ్యశ్రీ"
+    ],
+    "ignoaps-005": [
+        "ntr bharosa pension", "social security pension", "ignoaps",
+        "old age pension", "oap",
+        "వృద్ధాప్య పెన్షన్", "సామాజిక భద్రత పెన్షన్", "ఎన్టీఆర్ భరోసా పెన్షన్"
+    ],
+    "widow-pension-006": [
+        "widow pension", "widow's pension", "widow pensions",
+        "వితంతు పెన్షన్", "వితంతువు పెన్షన్"
+    ],
+}
+
+
 def matches_scheme_name(message: str, scheme: dict, language: str) -> bool:
-    """Check if user message explicitly mentions the scheme name or abbreviation."""
+    """Check if user message explicitly mentions a scheme name or distinctive title."""
     msg = message.lower()
+    sid = scheme.get("id", "")
+
+    # Check known explicit keywords for registered schemes
+    if sid in SCHEME_EXPLICIT_KEYWORDS:
+        if any(kw in msg for kw in SCHEME_EXPLICIT_KEYWORDS[sid]):
+            return True
+
+    # Generic check: primary title before parentheses (must be multi-word and distinctive)
     lang_suffix = "_te" if language == "te" else "_en"
-    name = (scheme.get(f"scheme_name{lang_suffix}") or scheme.get("scheme_name") or "").lower()
-
-    if "kisan" in name and "kisan" in msg:
-        return True
-    if "rythu bharosa" in name and "rythu bharosa" in msg:
-        return True
-    if "rythu" in name and "rythu" in msg and "bharosa" not in msg:
-        # Avoid greedy collision between Rythu and Rythu Bharosa
-        return True
-    if "scholarship" in name or "jvd" in name:
-        if "scholarship" in msg or "jvd" in msg or "scholar" in msg or "చదువు" in msg:
-            return True
-    if "vaidya" in name or "ntr" in name or "seva" in name:
-        if "vaidya" in msg or "seva" in msg or "health" in msg or "ఆరోగ్యం" in msg:
-            return True
-    if "bharosa" in name and "rythu bharosa" not in name:
-        if "bharosa" in msg or "భరోసా" in msg:
-            return True
-    if "pension" in name:
-        if "pension" in msg or "పెన్షన్" in msg:
+    raw_name = (scheme.get(f"scheme_name{lang_suffix}") or scheme.get("scheme_name") or "")
+    if raw_name:
+        primary_part = raw_name.lower().split("(")[0].strip()
+        generic_tokens = {
+            "scheme", "schemes", "pension", "pensions", "scholarship", "scholarships",
+            "health", "education", "farmer", "farmers", "student", "students", "welfare"
+        }
+        if len(primary_part) > 6 and primary_part in msg and primary_part not in generic_tokens:
             return True
 
-    # Check for direct word inclusions
-    clean_name = "".join(c for c in name if c.isalnum() or c.isspace())
-    for word in clean_name.split():
-        if len(word) > 3 and word in msg:
-            return True
     return False
 
 
@@ -164,7 +184,10 @@ def chat_recommendations():
         logger.error(f"[ChatAPI] Error loading schemes: {err}")
         return jsonify({"error": "Could not load schemes database", "detail": str(err)}), 500
 
-    # 1. First check if the user explicitly mentions a scheme name in the message
+    # 1. Detect if the message mentions an intent/category
+    detected_intent = detect_intent_category(message)
+
+    # 2. Check if the user explicitly mentions a specific scheme by name
     explicit_scheme = None
     for s in schemes:
         if matches_scheme_name(message, s, language):
@@ -181,8 +204,8 @@ def chat_recommendations():
         active_scheme_id = explicit_scheme.get("id")
         category = explicit_scheme.get("category")
         status = "matched"
-    elif len(previous_scheme_ids) > 1 and is_follow_up:
-        # No explicit mention, and we have multiple previous schemes with a follow-up query
+    elif len(previous_scheme_ids) > 1 and is_follow_up and not detected_intent:
+        # Ambiguous follow-up ONLY if user is not introducing a new category
         is_ambiguous = True
         prev_schemes = []
         for pid in previous_scheme_ids:
@@ -191,14 +214,26 @@ def chat_recommendations():
                     prev_schemes.append(s)
                     break
     else:
-        # Standard follow-up or new category query
+        # Standard follow-up or category query
         if active_scheme_id:
             for s in schemes:
                 if s.get("id") == active_scheme_id:
                     active_scheme = s
                     break
 
-        if is_follow_up and active_scheme:
+        active_cat = (active_scheme.get("category") or "").lower() if active_scheme else ""
+        intent_cat_map = {
+            "farmer": "agriculture",
+            "education": "education",
+            "student": "education",
+            "pension": "pension",
+            "health": "health",
+            "women": "pension",
+        }
+        detected_category = intent_cat_map.get(detected_intent, detected_intent)
+        is_same_category = (detected_intent is None) or (detected_category == active_cat)
+
+        if is_follow_up and active_scheme and is_same_category:
             matched_schemes = [active_scheme]
             category = active_scheme.get("category")
             status = "matched"
